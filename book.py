@@ -1,13 +1,16 @@
 import requests
 from bs4 import BeautifulSoup as tang
+import time
+import os.path
 
 class book():
     def __init__(self):
-        self.first_url = "https://www.biquqq.com/0_1/1.html" # For testing
+        self.first_url = "https://www.biquqq.com/0_1/3002.html" # For testing
         self.book_url = "https://www.biquqq.com/0_1/" 
         self.useragent = {"user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"}
         self.url_root = "https://www.biquqq.com"
-    
+        self.error_count = 0
+        
     def get_response(self, url):
         response = requests.get(url,headers=self.useragent)
         response.encoding = 'utf-8'
@@ -25,8 +28,15 @@ class book():
         return content.text
     
     def write_file(self, title, content):
-        with open(title + '.txt', 'w') as f:
-            f.write(content)
+        try:
+            with open(os.path.join('/bookgetter/book',title + '.txt'), 'w', encoding = 'utf-8') as f:
+                f.write(content)
+        except OSError:
+            self.error_count += 1
+            print("OSError, trying to replace title")
+            book.write_file(content.splitlines()[0].strip() ,content)
+            print("Wrote the file with name: " + content.splitlines()[0].strip())
+            
     
     def get_chapters(self, response):
         href_list = []
@@ -45,9 +55,20 @@ class book():
         for chap in chapter_list:
             title = book.get_title(book.get_response(chap))
             content = book.get_content(book.get_response(chap))
-            book.write_file(title,content)            
+            print("Attempt writing: " + title)
+            book.write_file(title,content)
+            print("Done writing: " + title)
+            time.sleep(1)           
 
 if __name__ == "__main__":
     book = book()
+    
+    """title = book.get_title(book.get_response(book.first_url))
+    content = book.get_content(book.get_response(book.first_url))
+    print(content.splitlines()[0])
+    book.write_file(title,content)"""
+    # test code block 
+    
     book.start()
     
+    print("Total error", book.error_count)
