@@ -21,4 +21,6 @@ scrape contents from www.biquqq.com (笔趣阁) to txt file.
 ```
 beautifulsoup4
 requests
+time
+os
 ```
