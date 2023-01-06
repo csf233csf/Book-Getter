@@ -14,6 +14,10 @@ scrape contents from www.biquqq.com (笔趣阁) to txt file.
 3. Error handling and random delays (Done)
 
 4. Console Status (Done)
+
+5. Rewrite the algorithm with multiprocessing to increase the speed of downloading.
+
+6. API
 ```
 
 ### Requirements
