@@ -6,7 +6,6 @@ scrape contents from www.biquqq.com (笔趣阁) to txt file.
 
 ### Checklist
 
-```
 1. ~~Gets all chapters from a book url and saves them to txt files. (Done)~~
 
 2. ~~Seperate numbers(this number you can edit) of chapters into different folders for me to download. (Done)~~
@@ -18,7 +17,6 @@ scrape contents from www.biquqq.com (笔趣阁) to txt file.
 5. **Rewrite the algorithm with multiprocessing to increase the speed of downloading.**
 
 6. **API**
-```
 
 ### Requirements
 
