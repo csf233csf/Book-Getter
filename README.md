@@ -2,7 +2,7 @@
 
 scrape contents from www.biquqq.com (笔趣阁) to txt file. 
 
-```This is a simple bs4 learning project. I will be more than pleased if you can contribute.```
+```This is a simple bs4 learning project. I will be more than pleased if you can help with the checklists below.```
 
 ### Checklist
 
