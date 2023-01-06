@@ -39,7 +39,7 @@ class book():
             print("Wrote the file with name: " + content.splitlines()[0].strip())
         except:
             self.error_count += 1
-            book.write_file(f"Error File {self.error_count}" ,content)
+            book.write_file(f"Error File {self.error_count}" ,content) # Recursion
             print(f"Unknown Error, wrote the file with name: 'Error File {self.error_count}'")
     
     def get_chapters(self, response):
